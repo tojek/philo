@@ -75,11 +75,11 @@ void	pick_up_forks(t_philosopher *philo)
 {
 	int			next_id;
 	int			prev_id;
-	int			wt;
+	//int			wt;
 
 	next_id = get_next_philosopher_id(philo);
 	prev_id = get_previous_philosopher_id(philo);
-	wt = 0;
+	//wt = 0;
 	while (1)
 	{
 		if (is_neighbor_hungrier(philo, next_id, prev_id))

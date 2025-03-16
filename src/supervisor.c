@@ -34,7 +34,7 @@ int	check_philosopher_death(t_simulation *sim, int i)
 int	check_philosopher_meals(t_simulation *sim)
 {
 	int	i;
-	int	finished_philosophers;	
+	int	finished_philosophers;
 
 	finished_philosophers = 0;
 	i = 0;
@@ -45,11 +45,12 @@ int	check_philosopher_meals(t_simulation *sim)
 			>= sim->number_of_times_each_philosopher_must_eat)
 		{
 			finished_philosophers++;
+			sim->finished_philosophers = finished_philosophers;
 		}
 		pthread_mutex_unlock(&sim->philosophers[i].meal_mutex);
 		i++;
 	}
-	return (finished_philosophers == sim->number_of_philosophers);
+	return (sim->finished_philosophers == sim->number_of_philosophers);
 }
 
 void	check_philosopher_status(t_simulation *sim)
@@ -61,6 +62,7 @@ void	check_philosopher_status(t_simulation *sim)
 	{
 		if (check_philosopher_death(sim, i))
 			return ;
+		i++;
 	}
 }
 

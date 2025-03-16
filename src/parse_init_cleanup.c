@@ -58,6 +58,7 @@ void	init_forks(t_simulation *sim)
 	if (pthread_mutex_init(&sim->death_mutex, NULL) != 0)
 		print_error("Failed to initialize death mutex");
 	sim->death_flag = 0;
+	sim->finished_philosophers = 0;
 }
 
 void	init_philosophers(t_simulation *sim)
